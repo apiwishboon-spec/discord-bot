@@ -25,4 +25,10 @@ async function deployCommands() {
   }
 }
 
-deployCommands();
+if (require.main === module) {
+  deployCommands();
+}
+
+module.exports = {
+  deployCommands
+};

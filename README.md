@@ -11,6 +11,7 @@ Boon Bot is a production-ready, beginner-friendly Discord bot built with Node.js
 - `/ban user reason` - Bans member with error handling
 - Console logging for all moderation actions
 - Optional moderation log channel (`LOG_CHANNEL_ID`)
+- Optional auto-greet when a member joins (`WELCOME_CHANNEL_ID`)
 
 ## Project Structure
 
@@ -55,21 +56,20 @@ discoard bot/
    - `CLIENT_ID`: Discord application ID
    - `GUILD_ID` (optional): for fast guild-only command registration
    - `LOG_CHANNEL_ID` (optional): moderation logs channel ID
+   - `WELCOME_CHANNEL_ID` (optional): channel ID for join greeting
+   - `ENABLE_MEMBER_EVENTS` (optional): `true` to enable join events
 
-4. Deploy slash commands:
-   ```bash
-   npm run deploy:commands
-   ```
-
-5. Start bot:
+4. Start bot:
    ```bash
    npm start
    ```
 
+The bot now auto-deploys slash commands on startup.
+
 ## Discord Setup Notes
 
 - In Discord Developer Portal:
-  - Enable **Server Members Intent**
+  - Enable **Server Members Intent** only if `ENABLE_MEMBER_EVENTS=true`
 - Bot permissions in your server:
   - `Moderate Members`
   - `Ban Members`
