@@ -1,95 +1,90 @@
-# Boon Bot (Discord Moderation Bot)
+# Boon Bot (Node.js Discord Moderation Bot)
 
-Boon Bot is a production-ready, beginner-friendly Discord bot built with Python and `discord.py` 2.x using **slash commands** (`app_commands`).
+Boon Bot is a production-ready, beginner-friendly Discord bot built with Node.js and `discord.js` v14 using **slash commands**.
 
 ## Features
 
-- `/hello` - Responds with a friendly greeting.
-- `/ping` - Basic latency check.
-- `/warn user reason` - Sends a warning embed and logs action.
-- `/timeout user minutes reason` - Timeouts a member with permission/error handling.
-- `/ban user reason` - Bans a member with permission/error handling.
-- Console logging for moderation actions.
-- Optional moderation log channel forwarding via environment config.
+- `/hello` - Responds with `Hello {user}, I am Boon Bot 🤖`
+- `/ping` - Basic latency check
+- `/warn user reason` - Sends warning embed + logs action
+- `/timeout user minutes reason` - Timeouts member with error handling
+- `/ban user reason` - Bans member with error handling
+- Console logging for all moderation actions
+- Optional moderation log channel (`LOG_CHANNEL_ID`)
 
 ## Project Structure
 
 ```text
 discoard bot/
-├── bot/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── utils.py
-│   └── cogs/
-│       ├── __init__.py
-│       ├── general.py
-│       └── moderation.py
+├── src/
+│   ├── index.js
+│   ├── deploy-commands.js
+│   ├── config.js
+│   ├── logger.js
+│   ├── commands/
+│   │   ├── index.js
+│   │   ├── general.js
+│   │   └── moderation.js
+│   └── utils/
+│       ├── embed.js
+│       └── log-channel.js
 ├── .env.example
-├── main.py
-└── requirements.txt
+├── package.json
+└── README.md
 ```
 
 ## Requirements
 
-- Python 3.10+
-- A Discord bot application created at [Discord Developer Portal](https://discord.com/developers/applications)
+- Node.js 20+
+- A Discord application from [Discord Developer Portal](https://discord.com/developers/applications)
 
 ## Setup (Local)
 
-1. Create and activate a virtual environment:
-   - macOS/Linux:
-     ```bash
-     python3 -m venv .venv
-     source .venv/bin/activate
-     ```
-   - Windows (PowerShell):
-     ```powershell
-     py -m venv .venv
-     .venv\Scripts\Activate.ps1
-     ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```bash
-   pip install -r requirements.txt
+   npm install
    ```
 
-3. Create `.env` from example:
+2. Create `.env`:
    ```bash
    cp .env.example .env
    ```
 
-4. Fill `.env`:
-   - `DISCORD_TOKEN`: your bot token
-   - `LOG_CHANNEL_ID` (optional): channel ID for moderation logs
+3. Fill `.env` values:
+   - `DISCORD_TOKEN`: bot token
+   - `CLIENT_ID`: Discord application ID
+   - `GUILD_ID` (optional): for fast guild-only command registration
+   - `LOG_CHANNEL_ID` (optional): moderation logs channel ID
 
-5. Run bot:
+4. Deploy slash commands:
    ```bash
-   python main.py
+   npm run deploy:commands
+   ```
+
+5. Start bot:
+   ```bash
+   npm start
    ```
 
 ## Discord Setup Notes
 
-- In the Discord Developer Portal:
-  - Enable **Server Members Intent** (required for moderation member actions).
-- Bot needs permissions in your server:
+- In Discord Developer Portal:
+  - Enable **Server Members Intent**
+- Bot permissions in your server:
   - `Moderate Members`
   - `Ban Members`
   - `Send Messages`
   - `Embed Links`
-- Invite bot with `applications.commands` scope so slash commands are available.
+- Invite with scopes:
+  - `bot`
+  - `applications.commands`
 
-## Deployment (Simple Guide)
+## Deploy to Hosting
 
-You can deploy this on platforms like Railway, Render, or a VPS:
+For Railway/Render/VPS:
 
-1. Push project to GitHub.
-2. Create a new service on your hosting platform.
-3. Set environment variables:
-   - `DISCORD_TOKEN`
-   - `LOG_CHANNEL_ID` (optional)
-4. Start command:
-   ```bash
-   python main.py
-   ```
+- Build command: `npm install`
+- Start command: `npm start`
+- Environment variables: `DISCORD_TOKEN`, `CLIENT_ID`, optional `GUILD_ID`, optional `LOG_CHANNEL_ID`
 
-For reliability, use a host that supports long-running worker/background services.
+Use a worker/background service type so the bot stays online 24/7.
