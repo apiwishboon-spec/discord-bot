@@ -62,7 +62,7 @@ const commands = [
       const targetUser = interaction.options.getUser("user", true);
       const minutes = interaction.options.getInteger("minutes", true);
       const reason = interaction.options.getString("reason", true);
-      const targetMember = await interaction.guild.members.fetch(targetUser.id).catch(() => null);
+      const targetMember = interaction.options.getMember("user");
 
       if (!targetMember) {
         await interaction.reply({

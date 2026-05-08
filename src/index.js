@@ -2,16 +2,14 @@ const {
   Client,
   Collection,
   Events,
-  GatewayIntentBits,
-  Partials
+  GatewayIntentBits
 } = require("discord.js");
 const config = require("./config");
 const { commands } = require("./commands");
 const { logInfo, logError } = require("./logger");
 
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
-  partials: [Partials.GuildMember, Partials.User]
+  intents: [GatewayIntentBits.Guilds]
 });
 
 client.commands = new Collection();
