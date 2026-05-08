@@ -1,14 +1,23 @@
-# Boon Bot (Node.js Discord Moderation Bot)
+# Rick Astley Bot (Node.js Discord Moderation Bot)
 
-Boon Bot is a production-ready, beginner-friendly Discord bot built with Node.js and `discord.js` v14 using **slash commands**.
+Rick Astley Bot is a production-ready, beginner-friendly Discord bot built with Node.js and `discord.js` v14 using **slash commands**.
 
 ## Features
 
-- `/hello` - Responds with `Hello {user}, I am Boon Bot 🤖`
+- `/hello` - Responds with `Hello {user}, I am Rick Astley Bot 🤖`
 - `/ping` - Basic latency check
+- `/8ball question` - Magic 8-ball answer
+- `/roll [sides]` - Roll a dice
+- `/coinflip` - Heads or tails
+- `/choose options` - Pick one option from a comma list
+- `/rps choice` - Play rock-paper-scissors
 - `/warn user reason` - Sends warning embed + logs action
+- `/warnings user` - Shows recent warnings for a user
 - `/timeout user minutes reason` - Timeouts member with error handling
+- `/untimeout user reason` - Removes timeout from a user
 - `/ban user reason` - Bans member with error handling
+- `/kick user reason` - Kicks a member with error handling
+- `/purge amount` - Deletes up to 100 recent messages
 - Console logging for all moderation actions
 - Optional moderation log channel (`LOG_CHANNEL_ID`)
 - Optional auto-greet when a member joins (`WELCOME_CHANNEL_ID`)

@@ -1,5 +1,5 @@
 {
-  "name": "boon-bot",
+  "name": "rick-astley-bot",
   "version": "1.0.0",
   "description": "Production-ready moderation Discord bot using discord.js slash commands",
   "main": "src/index.js",
